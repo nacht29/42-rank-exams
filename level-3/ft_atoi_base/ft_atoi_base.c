@@ -72,6 +72,6 @@ int main(void)
 	// 	printf("power: %i %i\n", i, calc(1, 16, i));
 	// printf("%s\n", produce_base(16));
 	// printf("get_digit: %i", get_digit('1', produce_base(11)));
-	int i = ft_atoi_base("23", 5);
+	int i = ft_atoi_base("23f", 16);
 	printf("final: %i\n", i);
 }
