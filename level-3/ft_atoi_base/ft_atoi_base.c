@@ -47,8 +47,8 @@ int ft_atoi_base(const char *str, int str_base)
 {
 	int 		base = str_base;
 	int			result = 0;
-	int			digit;
 	int			power = 0;
+	int			digit;
 	char		*base_str;
 	const char	*start = str;		
 
