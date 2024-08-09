@@ -32,9 +32,9 @@ char	*str_cap(char *str)
 
 	flag = 1;
 	s = str;
-	while (*s)
+	while (*s != '\0')
 	{
-		if (is_alnum(*str) == 1)
+		if (is_alnum(*s) == 1)
 		{
 			if (flag == 1)
 			{
@@ -53,22 +53,22 @@ char	*str_cap(char *str)
 
 int main(int ac, char *av[])
 {
-    char    *s;
+	char    *s;
 
-    if (ac > 1)
-    {
-        for (int i = 1; i < ac; i++)
-        {
-            s = str_cap(av[i]);
-            while (*s)
-            {
-                write(1, s, 1);
-                s++;
-            }
-            write(1, "\n", 1);
-        }
-    }
-    else
-        write(1, "\n", 1);
-    return (0);
+	if (ac > 1)
+	{
+		for (int i = 1; i < ac; i++)
+		{
+			s = str_cap(av[i]);
+			while (*s)
+			{
+				write(1, s, 1);
+				s++;
+			}
+			write(1, "\n", 1);
+		}
+	}
+	else
+		write(1, "\n", 1);
+	return (0);
 }
