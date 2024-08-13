@@ -10,9 +10,9 @@ int	main(int argc, char *argv[])
 	{
 		while (argv[1][i])
 		{
-			if (argv[1][i] >= 65 && argv[1][i] <= 90)
+			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
 				j = ((int)(argv[1][i]) - 65) + 1;
-			else if (argv[1][i] >= 97 && argv[1][i] <= 122)
+			else if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
 				j = ((int)(argv[1][i]) - 97) + 1;
 			else
 				j = 1;
