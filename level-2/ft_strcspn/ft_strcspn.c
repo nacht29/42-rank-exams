@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
-*strcspn = find index of first similiar char - strps when current char in s is in reject
+*strcspn = find index of first similiar char between two str - strps when current char in s is in reject
 *strspn = find index of first diff char - stop if current char in s is not in accept
 */
 size_t  ft_strcspn(const char *s, const char *reject)
@@ -23,7 +24,8 @@ size_t  ft_strcspn(const char *s, const char *reject)
 	return (i);
 }
 
-int main(void)
+int main(int ac, char *av[])
 {
-	printf("%ld\n", ft_strcspn("apple", "le"));
+	printf("og: %ld\n", strcspn(av[1],av[2]));
+	printf("%ld\n", ft_strcspn(av[1],av[2]));
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 char    *ft_strchr(char *str, int ref)
 {
@@ -25,7 +26,8 @@ size_t  ft_strspn(const char *s, const char *accept)
     return (i);
 }
 
-int main(void)
+int main(int ac, char *av[])
 {
-    printf("%lu\n", ft_strspn("apple", "api"));
+	printf("og: %ld\n", strspn(av[1],av[2]));
+	printf("%ld\n", ft_strspn(av[1],av[2]));
 }
