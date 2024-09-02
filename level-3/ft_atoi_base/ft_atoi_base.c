@@ -1,77 +1,93 @@
+#include <unistd.h>
 #include <stdio.h>
 
-char to_lower(char c)
+int	ft_strlen(char *s)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c += 32);
-	return (c);
-}
+	int	len;
 
-char *produce_base(int base)
-{
-	char base_str[base + 1];
-	char ref[16] = "0123456789abcdef";
-	char *ret;
-
-	for (int i = 0; i < base; i++)
-		base_str[i] = ref[i];
-	base_str[base] = '\0';
-	ret = base_str;
-	return (ret);
-}
-
-int get_digit(char c, char *base)
-{
-	int i = 0;
-
-	while (base[i])
+	len = 0;
+	while (*s)
 	{
-		if (base[i] == c)
-			break;
+		len++;
+		s++;
+	}
+	return (len);
+}
+
+int	ft_strchr(char *s, char ref)
+{
+	while (*s)
+	{
+		if (*s == ref)
+			return (1);
+		s++;
+	}
+	return (0);
+}
+
+int	base_to_num(char *base_str, char ref, int base)
+{
+	int	digit;
+
+	digit = 0;
+	while (base_str[digit])
+	{
+		if (base_str[digit] == ref)
+			return (digit);
+		digit++;
+	}
+	return (0);
+}
+
+int	is_valid_base(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ft_strlen(base) - 1)
+	{
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[j] == base[i])
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	return (i);
+	return (1);
 }
 
-int calc(int digit, int base, int power)
+int	ft_atoi_base(char *num, char *base)
 {
-	int og_base = base;
-	if (power == 0)
-		return (digit);
-	for (int i = 1; i < power; i++)
-		base *= og_base;
-	return (digit * base);	
-}
+	int	op;
+	int	mult;
+	int	results;
 
-int ft_atoi_base(const char *str, int str_base)
-{
-	int 		base = str_base;
-	int			result = 0;
-	int			power = 0;
-	int			digit;
-	char		*base_str;
-	const char	*start = str;		
-
-	base_str = produce_base(base);
-	while (*str)
-		str++;
-	str--;
-	while (str != start - 1)
+	if (is_valid_base(base) == 0)
+		return (0);
+	op =  1;
+	mult =  ft_strlen(base); 
+	results = 0;
+	while (*num == ' ' || (*num >= 9 && *num <= 32))
+		num++;
+	if (*num == '+' || op == '-')
 	{
-		digit = get_digit(*str, base_str);
-		result += calc(digit, base, power);
-		power++;
-		str--;
+		if (*num == '-')
+			op = -1;
+		num++;
 	}
-	return (result);
+	while (ft_strchr(base, *num) == 1)
+	{
+		results = results * mult + base_to_num(base, *num, mult);
+		num++;
+	}
+	return (results);
 }
 
 int main(void)
 {
-	// for (int  i = 0; i <= 3; i++)
-	// 	printf("power: %i %i\n", i, calc(1, 16, i));
-	// printf("%s\n", produce_base(16));
-	// printf("get_digit: %i", get_digit('1', produce_base(11)));
-	int i = ft_atoi_base("23f", 16);
-	printf("final: %i\n", i);
+	int i = ft_atoi_base("GA", "ABCDEFG");
+	printf("%i\n", i);
 }
