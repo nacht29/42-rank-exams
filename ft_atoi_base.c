@@ -39,12 +39,34 @@ int	base_to_num(char *base_str, char ref, int base)
 	return (0);
 }
 
+int	is_valid_base(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ft_strlen(base) - 1)
+	{
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[j] == base[i])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	ft_atoi_base(char *num, char *base)
 {
 	int	op;
 	int	mult;
 	int	results;
 
+	if (is_valid_base(base) == 0)
+		return (0);
 	op =  1;
 	mult =  ft_strlen(base); 
 	results = 0;
