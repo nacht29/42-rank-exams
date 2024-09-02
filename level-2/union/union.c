@@ -1,7 +1,7 @@
 #include <unistd.h>
 
 int main(int ac, char **av)
-{
+{ 
 	if (ac == 3)
 	{
 		unsigned char seen[256] = {0};
