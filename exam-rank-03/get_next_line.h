@@ -1,15 +1,14 @@
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <fcntl.h>
+#ifndef GET_NEXT_LINE
+# define GET_NEXT_LINE
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 20
 # endif
+
+# include <stdlib.h> //malloc
+# include <unistd.h> // read 
+# include <fcntl.h> // open function
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -30,6 +29,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	free_list(t_node **lst);
 char	*ft_strtrim(char const *s1, char const *set);
+void	free_list(t_node **lst);
+
 #endif
