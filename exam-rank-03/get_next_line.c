@@ -29,7 +29,6 @@ char	*get_next_line(int fd)
 		add_node(&lst, temp_buff);
 		free(temp_buff);
 	}
-	// return (ft_strtrim(next_line, "\r"));
 	return (next_line);
 }
 
