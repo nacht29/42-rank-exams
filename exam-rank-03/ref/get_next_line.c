@@ -5,8 +5,12 @@ static char	*process_newline_node(t_node *lst, char **temp_buff, char *line);
 int main(void)
 {
 	int	fd = open("test.txt", O_RDONLY);
-	char *line = get_next_line(fd);
-	printf("%s\n", line);
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
 }
 
 char	*get_next_line(int fd)
@@ -51,7 +55,7 @@ int	read_to_list(t_node **lst, int fd)
 		current = *lst;
 		while (current)
 		{
-			if (has_newline(current->str))
+			if (ft_strchr(current->str, '\n'))
 				return (1);
 			current = current->next;
 		}
@@ -122,7 +126,7 @@ char	*extract_line(t_node *lst, char **temp_buff)
 	line[0] = '\0';
 	while (lst)
 	{
-		if (has_newline(lst->str) == False)
+		if (ft_strchr(lst->str, '\n') == FALSE)
 		{
 			temp = ft_strjoin(line, lst->str);
 			free(line);

@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	counter;
 
@@ -10,7 +10,7 @@ size_t	ft_strlen(char *s)
 	return (counter);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	total_size;
 	char	*final_str;
@@ -39,18 +39,23 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (final_str);
 }
 
-int	has_newline(char *s)
+int	ft_strchr(const char *s, int c)
 {
-	while (*s)
+	char	ref;
+	char	*temp;
+
+	ref = (char)c;
+	temp = (char *)s;
+	while (*temp)
 	{
-		if (*s == '\n')
-			return (1);
-		s++;
+		if (*temp == ref)
+			return (TRUE);
+		temp++;
 	}
-	return (0);
+	return (FALSE);
 }
 
-char	*ft_substr(char *s, size_t start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*holder;
 	size_t	i;
