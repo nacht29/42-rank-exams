@@ -28,6 +28,6 @@ void	free_list(t_node **lst);
 size_t	ft_strlen(char const *s);
 char	*ft_substr(char const *s, size_t start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
-int	has_newline(const char *s);
+int		has_newline(const char *s);
 
 #endif
