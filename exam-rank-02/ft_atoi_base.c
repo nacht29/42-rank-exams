@@ -86,8 +86,8 @@ int	ft_atoi_base(char *num, char *base)
 	return (results);
 }
 
-int main(void)
+/* int main(void)
 {
 	int i = ft_atoi_base("GA", "ABCDEFG");
 	printf("%i\n", i);
-}
+} */
