@@ -3,31 +3,11 @@
 size_t	ft_strlen(char const *s)
 {
 	size_t	len;
-	
+
 	len = 0;
 	while (s[len])
 		len++;
 	return (len);
-}
-
-char	*ft_substr(char *s, size_t start, size_t len)
-{
-	char	*substr;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	substr = malloc(len + 1);
-	if (!substr)
-		return (NULL);
-	i = 0;
-	while (s[start + i] && i < len)
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[len] = '\0';
-	return (substr);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -59,6 +39,26 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (joined);
 }
 
+char	*ft_substr(char const *s, size_t start, size_t len)
+{
+	char	*substr;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	substr = malloc(len + 1);
+	if (!substr)
+		return (NULL);
+	i = 0;
+	while (s[start + i] && i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[len] = '\0';
+	return (substr);
+}
+
 int		has_newline(const char *s)
 {
 	if (!s)
@@ -74,8 +74,8 @@ int		has_newline(const char *s)
 
 void	free_list(t_node **lst)
 {
-	t_node	*temp;
 	t_node	*cur;
+	t_node	*temp;
 
 	if (!lst || !(*lst))
 		return ;
